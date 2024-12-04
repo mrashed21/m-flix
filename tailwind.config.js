@@ -8,6 +8,9 @@ export default {
         Roboto: ["Roboto", "serif"],
         Inter: ["Inter", "serif"],
       },
+      textUnderlineOffset: {
+        3: '3px',
+      }
     },
   },
   plugins: [daisyui],
