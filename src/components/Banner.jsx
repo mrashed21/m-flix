@@ -45,7 +45,7 @@ const Banner = () => {
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
-        className="mySwiper"
+        className="mySwiper -z-50"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index} className="relative">

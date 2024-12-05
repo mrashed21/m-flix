@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AddMovie from "../components/AddMovie";
 import CommingSoon from "../components/CommingSoon";
 import Login from "../components/Login";
+import MovieDetails from "../components/MovieDetails";
 import MyFavorite from "../components/MyFavorite";
 import Register from "../components/Register";
 import ResetPassword from "../components/ResetPassword";
@@ -34,6 +35,14 @@ const routes = createBrowserRouter([
         path: "/movie/all",
         element: <AllMovie />,
         loader: () => fetch("http://localhost:5000/movie/all"),
+      },
+      {
+        path: "/movie/details/:id",
+        element: <MovieDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/movie/details/${params.id}`).then(
+            (res) => res.json()
+          ),
       },
       {
         path: "/movie/add",
