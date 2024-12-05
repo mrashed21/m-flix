@@ -38,7 +38,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/movie/details/:id",
-        element: <MovieDetails />,
+        element:   <PrivateRoute><MovieDetails /></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/movie/details/${params.id}`).then(
             (res) => res.json()
