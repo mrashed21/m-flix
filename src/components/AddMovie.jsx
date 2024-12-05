@@ -53,7 +53,7 @@ const AddMovie = () => {
             {...register("poster", {
               required: "Poster URL is required.",
               pattern: {
-                value: /^https?:\/\/.+/,
+                // value: /^https?:\/\/.+/,
                 message: "Must be a valid URL.",
               },
             })}
