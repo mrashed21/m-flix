@@ -9,6 +9,7 @@ import MainLayout from "../layouts/MainLayout";
 import AllMovie from "../pages/AllMovie";
 import Home from "../pages/Home";
 import AuthProvider from "../provider/AuthProvider";
+import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -32,14 +33,23 @@ const routes = createBrowserRouter([
       {
         path: "/movie/all",
         element: <AllMovie />,
+        loader: () => fetch("http://localhost:5000/movie/all"),
       },
       {
         path: "/movie/add",
-        element: <AddMovie />,
+        element: (
+          <PrivateRoute>
+            <AddMovie />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/movie/favorites",
-        element: <MyFavorite />,
+        element: (
+          <PrivateRoute>
+            <MyFavorite />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/movie/comming-soon",

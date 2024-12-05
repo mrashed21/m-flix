@@ -6,7 +6,7 @@ import { AuthContext } from "../provider/AuthProvider";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
-
+  console.log(user);
   const handleLinkClick = () => {
     setOpen(false);
   };
@@ -149,15 +149,66 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div
+        <div className="navbar-end flex gap-5">
+          {user ? (
+            <div
+              title={user?.displayName} // Show user name as tooltip
+              className="text-xl flex items-center md:text-3xl cursor-pointer w-10 h-10 rounded-full z-20"
+            >
+              {user.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  alt={user.displayName || "User Profile"}
+                  className="w-full h-full rounded-full"
+                />
+              ) : (
+                <img
+                  src="https://i.ibb.co/9YpfxcB/Avatar.png" // Default image
+                  alt="Default Avatar"
+                  className="w-full h-full rounded-full"
+                />
+              )}
+            </div>
+          ) : (
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? "text-red-600 font-bold" : "text-white font-semibold"
+              }
+            >
+              <button>Login</button>
+            </NavLink>
+          )}
+
+          {user && user.email ? (
+            <button onClick={logOut} className="font-medium">
+              Logout
+            </button>
+          ) : (
+            <NavLink
+              to="/register"
+              className={({ isActive }) =>
+                isActive ? "text-red-600 font-bold" : "text-white font-semibold"
+              }
+            >
+              <button>Register</button>
+            </NavLink>
+          )}
+
+          <button className="text-3xl">
+            <MdOutlineDarkMode />
+          </button>
+        </div>
+        {/* <div
           className="navbar-end flex gap-5
         "
         >
-          {user && user ? (
+          { user ? (
             <div
-              data-tooltip-id="my-tooltip"
-              data-tooltip-content={user?.displayName && user?.displayName}
-              className="text-xl flex items-center md:text-3xl cursor-pointer w-10 h-10 rounded-full"
+              // data-tooltip-id="my-tooltip"
+              // data-tooltip-content={ user?.displayName}
+              title={user?.displayName}
+              className="text-xl flex items-center md:text-3xl cursor-pointer w-10 h-10 rounded-full z-20"
             >
               {user && user?.photoURL ? (
                 <img
@@ -206,7 +257,7 @@ const Navbar = () => {
           <button className="text-3xl">
             <MdOutlineDarkMode />
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

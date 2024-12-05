@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
-  const { handleSignUp, handleLoginGoogle, setUser, handleName } =
+  const { handleLoginGoogle, handleRegister, setUser, handleName } =
     useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
@@ -59,6 +59,7 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     const { email, password, name, profile } = data;
+    console.log("this is data",data);
     const passwordError = validatePassword(password);
 
     if (passwordError) {
@@ -67,12 +68,12 @@ const Register = () => {
     }
 
     try {
-      const result = await handleSignUp(email, password);
+      const result = await handleRegister(email, password);
       await handleName(name, profile);
       setUser(result.user);
       toast.success("Signup successful!", {
         position: "top-center",
-        autoClose: 2500,
+        autoClose: 2000,
       });
       navigate(redirectTo);
     } catch (error) {
@@ -111,6 +112,7 @@ const Register = () => {
                   type="text"
                   placeholder="Enter your Photo URL"
                   className="input bg-[#F3F3F3] rounded-lg focus:outline-none"
+                  {...register("profile")}
                 />
               </div>
 

@@ -36,7 +36,7 @@ const Banner = () => {
   const swiperRef = useRef(null);
 
   return (
-    <div className="relative">
+    <div className=" ">
       <Swiper
         spaceBetween={30}
         loop={true}
