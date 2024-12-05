@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
   const [open, setOpen] = useState(false);
 
   const handleLinkClick = () => {
