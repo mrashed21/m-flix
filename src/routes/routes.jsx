@@ -6,6 +6,7 @@ import MovieDetails from "../components/MovieDetails";
 import MyFavorite from "../components/MyFavorite";
 import Register from "../components/Register";
 import ResetPassword from "../components/ResetPassword";
+import UpdateMovie from "../components/UpdateMovie";
 import MainLayout from "../layouts/MainLayout";
 import AllMovie from "../pages/AllMovie";
 import Home from "../pages/Home";
@@ -36,14 +37,7 @@ const routes = createBrowserRouter([
         element: <AllMovie />,
         loader: () => fetch("http://localhost:5000/movie/all"),
       },
-      {
-        path: "/movie/details/:id",
-        element:   <PrivateRoute><MovieDetails /></PrivateRoute>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/movie/details/${params.id}`).then(
-            (res) => res.json()
-          ),
-      },
+
       {
         path: "/movie/add",
         element: (
@@ -51,6 +45,22 @@ const routes = createBrowserRouter([
             <AddMovie />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/movie/details/:id",
+        element: (
+          <PrivateRoute>
+            <MovieDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/movie/details/${params.id}`),
+      },
+      {
+        path: "/movie/update/:id",
+        element: <UpdateMovie />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/movie/details/${params.id}`),
       },
       {
         path: "/movie/favorites",
