@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import swal from "sweetalert";
 import { AuthContext } from "../provider/AuthProvider";
 
 const AddMovie = () => {
   const { user } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,6 +16,12 @@ const AddMovie = () => {
     formState: { errors },
   } = useForm();
   const [rating, setRating] = useState(0);
+
+  const handleRatingChange = (rate) => {
+    setRating(rate);
+    setValue("rating", rate, { shouldValidate: true });
+  };
+
   const onSubmit = (data) => {
     const movieData = { ...data, email: user.email };
     fetch("http://localhost:5000/movie", {
@@ -25,20 +31,29 @@ const AddMovie = () => {
       },
       body: JSON.stringify(movieData),
     })
-      .then((res) => {
-        res.json();
-      })
+      .then((res) => res.json())
       .then((result) => {
-        console.log("Movie successfully added:", result);
-        toast.success("Movie added successfully!");
-        reset();
+        if (result.insertedId) {
+          swal({
+            title: "Added Movie!",
+            text: "Movie added successfully!",
+            icon: "success",
+            button: "OK",
+          });
+          navigate("/movie/all");
+          reset();
+          setRating(0);
+        } else {
+          swal({
+            title: "Failed to Add!",
+            text: "Failed to add movie!",
+            icon: "error",
+            button: "OK",
+          });
+        }
       });
   };
 
-  const handleRatingChange = (rate) => {
-    setRating(rate);
-    setValue("rating", rate, { shouldValidate: true });
-  };
   const genres = ["Comedy", "Drama", "Horror", "Action", "Romance"];
   const years = ["2024", "2023", "2022", "2021", "2020"];
 
@@ -53,7 +68,6 @@ const AddMovie = () => {
             {...register("poster", {
               required: "Poster URL is required.",
               pattern: {
-                // value: /^https?:\/\/.+/,
                 message: "Must be a valid URL.",
               },
             })}
@@ -168,6 +182,14 @@ const AddMovie = () => {
             <span className="text-error text-sm">{errors.rating.message}</span>
           )}
         </div>
+
+        <input
+          type="hidden"
+          {...register("rating", {
+            required: "Rating is required.",
+            validate: (value) => value > 0 || "You must add at least One Star.",
+          })}
+        />
 
         <div>
           <label className="block font-bold mb-2">Summary:</label>

@@ -1,11 +1,12 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import { AuthContext } from "../provider/AuthProvider";
+import swal from "sweetalert";
+// import { AuthContext } from "../provider/AuthProvider";
 const MovieDetails = () => {
   const movieDetail = useLoaderData();
 
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [spinner, setSpinner] = useState(false);
   const handleDelete = (_id) => {
@@ -16,6 +17,12 @@ const MovieDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
+          swal({
+            title: "Movie Deleted!",
+            text: "Movie Deleted Successfull!",
+            icon: "success",
+            button: "OK",
+          });
           navigate("/movie/all");
         }
       })
@@ -60,6 +67,23 @@ const MovieDetails = () => {
               />
             </div>
             <div className="card-actions justify-between mt-4">
+              <Link to={`/movie/update/${movieDetail._id}`}>
+                {" "}
+                <button className="btn btn-primary">Update</button>
+              </Link>
+
+              <button
+                onClick={() => {
+                  handleDelete(movieDetail._id);
+                }}
+                className="btn btn-primary"
+              >
+                Delete
+              </button>
+
+              <button className="btn btn-primary">Favorite</button>
+            </div>
+            {/* <div className="card-actions justify-between mt-4">
               {movieDetail?.email === user?.email ? (
                 <Link to={`/movie/update/${movieDetail._id}`}>
                   {" "}
@@ -86,7 +110,7 @@ const MovieDetails = () => {
               )}
 
               <button className="btn btn-secondary">Favorite</button>
-            </div>
+            </div> */}
           </div>
         </div>
       )}

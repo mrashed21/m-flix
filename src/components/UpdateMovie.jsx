@@ -1,11 +1,10 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../provider/AuthProvider";
-
+import swal from "sweetalert";
 const UpdateMovie = () => {
   const { user } = useContext(AuthContext);
   const updateMovie = useLoaderData();
@@ -18,6 +17,7 @@ const UpdateMovie = () => {
     formState: { errors },
   } = useForm();
   const [rating, setRating] = useState(updateMovie.rating);
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     const updateMovieData = { ...data, rating };
     console.log(updateMovieData);
@@ -31,9 +31,14 @@ const UpdateMovie = () => {
       .then((res) => {
         res.json();
       })
-      .then((result) => {
-        console.log("Movie successfull update:", result);
-        toast.success("Movie added update!");
+      .then(() => {
+        swal({
+          title: "Movie Update!",
+          text: "Movie update Successfull!",
+          icon: "success",
+          button: "OK",
+        });
+        navigate("/movie/all");
         reset();
       });
   };
