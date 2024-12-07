@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const Banner = () => {
   const slides = [
     {
-      image: "https://i.ibb.co/1KDKLmy/tyson-moultrie-BQTHOGNHo08-unsplash.jpg",
+       image:"https://i.ibb.co.com/tqMgDn2/slider-3.jpg",
       title: "Action Thrillers",
       description:
         "Explore a collection of heart-pounding action thrillers that keep you on the edge of your seat. Explosions, car chases, and high-stakes drama await!",
@@ -15,7 +15,7 @@ const Banner = () => {
       buttonLink: "#action-thrillers",
     },
     {
-      image: "https://i.ibb.co/KWpyNcD/henry-co-21-HT36zw-Ln8-unsplash.jpg",
+      image: "https://i.ibb.co.com/vmbm3SJ/slider-2.jpg",
       title: "Romantic Comedies",
       description:
         "Laugh, cry, and fall in love with our curated selection of romantic comedies. Perfect for date nights or when you need a mood lift.",
@@ -23,9 +23,8 @@ const Banner = () => {
       buttonLink: "#romantic-comedies",
     },
     {
-      image:
-        "https://i.ibb.co/y6Tx0Xj/abdulla-faiz-e-ZA7l-St-Pshc-unsplash.jpg",
-      title: "Epic Adventures",
+      image:"https://i.ibb.co.com/R3D0KyT/slider-1.jpg",     
+     title: "Epic Adventures",
       description:
         "Dive into fantastical worlds and epic adventures that transport you beyond the ordinary. Experience stories that ignite the imagination.",
       buttonText: "Start Watching",

@@ -59,6 +59,11 @@ const Login = () => {
       <div className="px-5 md:w-6/12 mx-auto">
         <div className="md:w-full flex-col">
           <div className="card bg-base-100 md:w-full shrink-0 shadow-md">
+            <h1
+              className="text-center text-4xl font-bold font-Roboto mt-9"
+            >
+              Login
+            </h1>
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -106,7 +111,7 @@ const Login = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-14 text-xl"
+                  className="absolute right-3 top-[58px] text-lg"
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
@@ -130,22 +135,22 @@ const Login = () => {
                   Don’t Have An Account?
                   <Link
                     to={"/register"}
-                    className="text-red-500 ml-1 font-medium"
+                    className="text-error ml-1 font-medium"
                   >
-                    Sign Up
+                    Register Now
                   </Link>
                 </p>
               </div>
 
               <div className="form-control mt-6">
-                <button className="btn btn-primary rounded-full">Login</button>
+                <button className="btn btn-outline rounded-xl">Login</button>
               </div>
             </form>
 
             <div className="form-control px-8 mb-8">
               <button
                 onClick={handleGoogleLogin}
-                className="btn btn-outline rounded-full"
+                className="btn btn-outline rounded-xl"
               >
                 <span className="text-2xl">
                   <FcGoogle />

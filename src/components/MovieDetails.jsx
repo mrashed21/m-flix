@@ -79,55 +79,69 @@ const MovieDetails = () => {
           <span className="loading loading-spinner loading-lg"></span>
         </div>
       ) : (
-        <div className="card bg-base-100 shadow-xl p-4 w-full max-w-sm mx-auto">
-          <figure className="rounded-lg">
-            <img
-              src={movieDetail.poster}
-              alt={movieDetail.title}
-              className="h-64 w-full rounded-lg object-cover"
-            />
-          </figure>
-          <div className="card-body p-0 mt-3">
-            <h2 className="card-title">{movieDetail.title}</h2>
-            <p className="text-sm text-gray-600">Genre: {movieDetail.genre}</p>
-            <p className="text-sm text-gray-600">
-              Duration: {movieDetail.duration} min
-            </p>
-            <p className="text-sm text-gray-600">
-              Release Year: {movieDetail.releaseYear}
-            </p>
-            <p className="text-sm text-gray-600 mt-2">{movieDetail.summary}</p>
-            <div className="flex items-center gap-2 mt-2">
-              <span className="font-semibold">Rating:</span>
-              <ReactStars
-                count={5}
-                value={movieDetail.rating}
-                size={20}
-                activeColor="#ffd700"
-                edit={false}
-              />
-            </div>
-            <div className="card-actions justify-between mt-4">
-              <Link to={`/movie/update/${movieDetail._id}`}>
-                {" "}
-                <button className="btn btn-primary">Update</button>
-              </Link>
+        <div className="bg-purple-100 py-10">
+          <div className="w-10/12 mx-auto">
+            <div className="card flex-row bg-base-100 shadow-xl p-4 w-full mx-auto gap-5">
+              <figure className="rounded-lg w-1/2">
+                <img
+                  src={movieDetail.poster}
+                  alt={movieDetail.title}
+                  className="h-96 w-full rounded-lg object-cover"
+                />
+              </figure>
+              <div className="card-body p-0 w-1/2">
+                <h2 className="card-title">{movieDetail.title}</h2>
+                <p className=" text-gray-600">
+                  <span className="font-medium"> Genre</span>:{" "}
+                  {movieDetail.genre}
+                </p>
+                <p className=" text-gray-600">
+                  <span className="font-medium">Duration</span>:{" "}
+                  {movieDetail.duration} min
+                </p>
+                <p className=" text-gray-600">
+                  <span className="font-medium"> Release Year</span>:{" "}
+                  {movieDetail.releaseYear}
+                </p>
+                <p className=" text-gray-600">
+                  <span className="font-medium"> Discription</span>:
+                  <p> {movieDetail.summary}</p>
+                </p>
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold">Rating:</span>
+                  <ReactStars
+                    count={5}
+                    value={movieDetail.rating}
+                    size={20}
+                    activeColor="#ffd700"
+                    edit={false}
+                  />
+                </div>
+                <div className="card-actions justify-between mt-4">
+                  <Link to={`/movie/update/${movieDetail._id}`} className="hover:bg-gray-300 px-5  border-2 border-black text-lg font-medium rounded-md py-2 ">
+                    {" "}
+                    <button className="">
+                      Update
+                    </button>
+                  </Link>
 
-              <button
-                onClick={() => {
-                  handleDelete(movieDetail._id);
-                }}
-                className="btn btn-primary"
-              >
-                Delete
-              </button>
+                  <button
+                    onClick={() => {
+                      handleDelete(movieDetail._id);
+                    }}
+                    className="hover:bg-error px-5  border-2 border-black text-lg font-medium rounded-md py-2 "
+                  >
+                    Delete
+                  </button>
 
-              <button
-                onClick={() => handleFavorite(movieDetail)}
-                className="btn btn-primary"
-              >
-                Favorite
-              </button>
+                  <button
+                    onClick={() => handleFavorite(movieDetail)}
+                   className="hover:bg-success px-5  border-2 border-black text-lg font-medium rounded-md py-2 "
+                  >
+                    Favorite
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

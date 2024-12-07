@@ -59,7 +59,7 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     const { email, password, name, profile } = data;
-    console.log("this is data",data);
+    console.log("this is data", data);
     const passwordError = validatePassword(password);
 
     if (passwordError) {
@@ -86,6 +86,9 @@ const Register = () => {
       <div className="px-5 md:px-0 md:w-6/12 mx-auto">
         <div className="w-full flex-col">
           <div className="card bg-base-100 w-full shrink-0 shadow-md">
+            <h1 className="text-center text-4xl font-bold font-Roboto mt-9">
+              Register Now
+            </h1>
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -111,9 +114,22 @@ const Register = () => {
                 <input
                   type="text"
                   placeholder="Enter your Photo URL"
-                  className="input bg-[#F3F3F3] rounded-lg focus:outline-none"
-                  {...register("profile")}
+                  className={`input bg-[#F3F3F3] rounded-lg focus:outline-none ${
+                    errors.profile ? "border-error" : ""
+                  }`}
+                  {...register("profile", {
+                    required: "Image URL is required.",
+                    pattern: {
+                      value: /^https:\/\/.+/,
+                      message: "Please enter a valid URL starting with https.",
+                    },
+                  })}
                 />
+                {errors.profile && (
+                  <p className="text-error text-sm mt-1">
+                    {errors.profile.message}
+                  </p>
+                )}
               </div>
 
               <div className="form-control">
@@ -166,7 +182,7 @@ const Register = () => {
               </div>
 
               <div className="form-control mt-6">
-                <button className="btn btn-primary rounded-full">
+                <button className="btn btn-outline rounded-xl">
                   Sign Up
                 </button>
               </div>
@@ -175,7 +191,7 @@ const Register = () => {
             <div className="form-control px-8 mb-8">
               <button
                 onClick={handleGoogleLogin}
-                className="btn btn-outline rounded-full text-black"
+                className="btn btn-outline rounded-xl"
               >
                 <span className="text-2xl">
                   <FcGoogle />

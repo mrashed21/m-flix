@@ -46,40 +46,49 @@ const MyFavorite = () => {
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Your Favorite Movies</h1>
-      {favorites.length === 0 ? (
-        <p className="text-gray-500">You have no favorite movies yet.</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {favorites.map((movie) => (
-            <div key={movie.movieId} className="card bg-base-100 shadow-lg p-4">
-              <figure className="rounded-lg">
+    <div className="bg-purple-100 py-10 min-h-screen">
+      <div className=" w-11/12 mx-auto p-4">
+        <h1 className="text-2xl font-bold mb-4">My Favorite Movies</h1>
+        {favorites.length === 0 ? (
+          <p className="text-gray-500 text-center font-semibold text-3xl mt-40">You have no favorite movies yet.</p>
+        ) : (
+          <ul className="space-y-4">
+            {favorites.map((movie) => (
+              <div
+                key={movie.movieId}
+                className="flex items-center space-x-4 bg-base-100 shadow-md p-4 rounded-xl"
+              >
                 <img
                   src={movie.poster}
                   alt={movie.title}
-                  className="h-48 w-full object-cover rounded-lg"
+                  className="h-52 w-48 object-cover rounded"
                 />
-              </figure>
-              <div className="card-body p-2">
-                <h2 className="text-lg font-semibold">{movie.title}</h2>
-                <p className="text-sm text-gray-500">{movie.genre}</p>
-                <p className="text-sm text-gray-500">
-                  Release Year: {movie.releaseYear}
-                </p>
-                <div className="card-actions justify-end mt-2">
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg">{movie.title}</h3>
+                  <p className=" text-gray-600">
+                    {" "}
+                    <span className="font-medium"> Genre</span>: {movie.genre}
+                  </p>
+                  <p className=" text-gray-600">
+                    <span className="font-medium"> Release Year</span>:{" "}
+                    {movie.releaseYear}
+                  </p>
+                  <p className=" text-gray-600">
+                    <span className="font-medium"> Discription</span>
+                    <p className="pl-1">{movie.summary}</p>
+                  </p>
                   <button
                     onClick={() => handleDeleteFavorite(movie.movieId)}
-                    className="btn btn-error btn-sm"
+                    className="btn btn-error w-full mt-3"
                   >
                     Delete
                   </button>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };

@@ -11,15 +11,18 @@ import MainLayout from "../layouts/MainLayout";
 import AllMovie from "../pages/AllMovie";
 import Home from "../pages/Home";
 import AuthProvider from "../provider/AuthProvider";
+import ThemeProvider from "../provider/ThemeProvider";
 import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: (
-      <AuthProvider>
-        <MainLayout />{" "}
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <MainLayout />
+        </AuthProvider>
+      </ThemeProvider>
     ),
     children: [
       { path: "/", element: <Home /> },

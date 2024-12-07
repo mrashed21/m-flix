@@ -14,12 +14,17 @@ const FeaturedMovieCard = ({ movie }) => {
       </figure>
       <div className="card-body p-0 mt-3">
         <h2 className="card-title">{movie.title}</h2>
-        <p className="text-sm text-gray-600">Genre: {movie.genre}</p>
-        <p className="text-sm text-gray-600">Duration: {movie.duration} min</p>
-        <p className="text-sm text-gray-600">
-          Release Year: {movie.releaseYear}
+        <p className=" text-gray-600">
+          <span className="font-medium"> Genre</span>: {movie.genre}
         </p>
-        <div className="flex items-center gap-2">
+        <p className=" text-gray-600">
+          <span className="font-medium">Duration</span>: {movie.duration} min
+        </p>
+        <p className=" text-gray-600">
+          <span className="font-medium"> Release Year</span>:{" "}
+          {movie.releaseYear}
+        </p>
+        <div className="flex items-center gap-5">
           <span className="font-semibold">Rating:</span>
           <ReactStars
             count={5}
@@ -29,9 +34,9 @@ const FeaturedMovieCard = ({ movie }) => {
             edit={false}
           />
         </div>
-        <div className="card-actions justify-end">
+        <div className="w-full ">
           <Link to={`/movie/details/${movie._id}`}>
-            <button className="btn btn-primary">See Details</button>
+            <button className="btn btn-outline w-full">See Details</button>
           </Link>
         </div>
       </div>

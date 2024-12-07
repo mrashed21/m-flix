@@ -14,12 +14,16 @@ const MovieCard = ({ movieData }) => {
         </figure>
         <div className="card-body p-0 mt-3">
           <h2 className="card-title">{movieData.title}</h2>
-          <p className="text-sm text-gray-600">Genre: {movieData.genre}</p>
-          <p className="text-sm text-gray-600">
-            Duration: {movieData.duration} min
+          <p className=" text-gray-600">
+            <span className="font-medium"> Genre</span>: {movieData.genre}
           </p>
-          <p className="text-sm text-gray-600">
-            Release Year: {movieData.releaseYear}
+          <p className=" text-gray-600">
+            <span className="font-medium">Duration</span>: {movieData.duration}{" "}
+            min
+          </p>
+          <p className=" text-gray-600">
+            <span className="font-medium"> Release Year</span>:{" "}
+            {movieData.releaseYear}
           </p>
           <div className="flex items-center gap-2">
             <span className="font-semibold">Rating:</span>
@@ -31,9 +35,10 @@ const MovieCard = ({ movieData }) => {
               edit={false}
             />
           </div>
-          <div className="card-actions justify-end">
+
+          <div className="w-full ">
             <Link to={`/movie/details/${movieData._id}`}>
-              <button className="btn btn-primary">See Details</button>
+              <button className="btn btn-outline w-full">See Details</button>
             </Link>
           </div>
         </div>
