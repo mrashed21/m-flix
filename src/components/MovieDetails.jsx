@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-// import { AuthContext } from "../provider/AuthProvider";
+import { AuthContext } from "../provider/AuthProvider";
 const MovieDetails = () => {
   const movieDetail = useLoaderData();
 
-  // const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [spinner, setSpinner] = useState(false);
   const handleDelete = (_id) => {
@@ -30,7 +30,48 @@ const MovieDetails = () => {
         setSpinner(false);
       });
   };
-  // console.log(movieDetail?.email, user?.email);
+
+  const handleFavorite = (movie) => {
+    const email = user?.email;
+    const favoriteData = {
+      email,
+      movieId: movie._id,
+      title: movie.title,
+      poster: movie.poster,
+      genre: movie.genre,
+      releaseYear: movie.releaseYear,
+      duration: movie.duration,
+      rating: movie.rating,
+      summary: movie.summary,
+    };
+
+    fetch(`http://localhost:5000/movie/favorites/${email}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(favoriteData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.exists) {
+          swal({
+            title: "Faild to Add!",
+            text: "This movie is already in your favorites!",
+            icon: "error",
+            button: "OK",
+          });
+        } else {
+          swal({
+            title: "Added Successfully",
+            text: "Added to favorites successfully!",
+            icon: "success",
+            button: "OK",
+          });
+        }
+      });
+  };
+
   return (
     <>
       {spinner ? (
@@ -81,36 +122,13 @@ const MovieDetails = () => {
                 Delete
               </button>
 
-              <button className="btn btn-primary">Favorite</button>
+              <button
+                onClick={() => handleFavorite(movieDetail)}
+                className="btn btn-primary"
+              >
+                Favorite
+              </button>
             </div>
-            {/* <div className="card-actions justify-between mt-4">
-              {movieDetail?.email === user?.email ? (
-                <Link to={`/movie/update/${movieDetail._id}`}>
-                  {" "}
-                  <button className="btn btn-secondary">Update</button>
-                </Link>
-              ) : (
-                <button disabled className="btn btn-secondary">
-                  Update
-                </button>
-              )}
-              {movieDetail?.email === user?.email ? (
-                <button
-                  onClick={() => {
-                    handleDelete(movieDetail._id);
-                  }}
-                  className="btn btn-secondary"
-                >
-                  Delete
-                </button>
-              ) : (
-                <button disabled className="btn btn-secondary">
-                  Delete
-                </button>
-              )}
-
-              <button className="btn btn-secondary">Favorite</button>
-            </div> */}
           </div>
         </div>
       )}

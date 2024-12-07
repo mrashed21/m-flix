@@ -23,7 +23,13 @@ const AddMovie = () => {
   };
 
   const onSubmit = (data) => {
-    const movieData = { ...data, email: user.email };
+  
+    const movieData = {
+      ...data,
+      email: user.email,
+      addedAt: new Date().toISOString(),
+    };
+
     fetch("http://localhost:5000/movie", {
       method: "POST",
       headers: {

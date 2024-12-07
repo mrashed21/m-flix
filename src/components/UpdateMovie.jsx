@@ -20,7 +20,6 @@ const UpdateMovie = () => {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     const updateMovieData = { ...data, rating };
-    console.log(updateMovieData);
     fetch(`http://localhost:5000/movie/update/${updateMovie._id}`, {
       method: "PUT",
       headers: {
