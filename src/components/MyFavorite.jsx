@@ -9,7 +9,9 @@ const MyFavorite = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/movie/favorites/${user.email}`)
+      fetch(
+        `https://movie-server-puce.vercel.app/movie/favorites/${user.email}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setFavorites(data);
@@ -19,9 +21,12 @@ const MyFavorite = () => {
   }, [user?.email]);
 
   const handleDeleteFavorite = (movieId) => {
-    fetch(`http://localhost:5000/movie/favorites/${user.email}/${movieId}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://movie-server-puce.vercel.app/movie/favorites/${user.email}/${movieId}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then(() => {
         swal({
@@ -50,20 +55,22 @@ const MyFavorite = () => {
       <div className=" w-11/12 mx-auto p-4">
         <h1 className="text-2xl font-bold mb-4">My Favorite Movies</h1>
         {favorites.length === 0 ? (
-          <p className="text-gray-500 text-center font-semibold text-3xl mt-40">You have no favorite movies yet.</p>
+          <p className="text-gray-500 text-center font-semibold text-3xl mt-40">
+            You have no favorite movies yet.
+          </p>
         ) : (
           <ul className="space-y-4">
             {favorites.map((movie) => (
               <div
                 key={movie.movieId}
-                className="flex items-center space-x-4 bg-base-100 shadow-md p-4 rounded-xl"
+                className="flex flex-col lg:flex-row items-center space-x-4 bg-base-100 shadow-md p-4 rounded-xl"
               >
                 <img
                   src={movie.poster}
                   alt={movie.title}
-                  className="h-52 w-48 object-cover rounded"
+                  className="h-52 w-full lg:w-48 object-cover rounded"
                 />
-                <div className="flex-1">
+                <div className="">
                   <h3 className="font-semibold text-lg">{movie.title}</h3>
                   <p className=" text-gray-600">
                     {" "}

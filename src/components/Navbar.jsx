@@ -34,7 +34,7 @@ const Navbar = () => {
 
               <ul
                 tabIndex={0}
-                className={`menu menu-sm bg-purple-950 rounded-box z-[1] mt-4 w-52  p-5 gap-3 shadow ${
+                className={`menu menu-sm bg-purple-950 rounded-box mt-4 w-52  p-5 gap-3 shadow z-50 ${
                   open ? "dropdown-content" : "hidden"
                 }`}
               >
@@ -157,16 +157,22 @@ const Navbar = () => {
           </div>
 
           <div className="navbar-end gap-3">
-            {user ? (
+            {user && (
               <div className="dropdown dropdown-end group z-50">
                 <div className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full">
-                    <img
-                      src={
-                        user.photoURL || "https://i.ibb.co/9YpfxcB/Avatar.png"
-                      }
-                      alt={user.displayName || "User Profile"}
-                    />
+                    {user && user?.photoURL ? (
+                      <img
+                        src={user?.photoURL}
+                        alt="user.displayName"
+                        className="w-full h-full rounded-full"
+                      />
+                    ) : (
+                      <img
+                        src={"https://i.ibb.co/9YpfxcB/Avatar.png"}
+                        alt={user.displayName}
+                      />
+                    )}
                   </div>
                 </div>
                 <ul className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box mt-3 w-52 p-4 shadow opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
@@ -181,7 +187,8 @@ const Navbar = () => {
                   </button>
                 </ul>
               </div>
-            ) : (
+            )}
+            {!user && (
               <>
                 <NavLink
                   to="/login"

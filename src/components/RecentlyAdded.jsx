@@ -5,7 +5,7 @@ const RecentlyAdded = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/movie/recent")
+    fetch("https://movie-server-puce.vercel.app/movie/recent")
       .then((res) => res.json())
       .then((data) => setMovies(data))
       .catch((err) => console.error("Error fetching recent movies:", err));
@@ -18,14 +18,14 @@ const RecentlyAdded = () => {
         {movies.map((movie) => (
           <div
             key={movie._id}
-            className="flex items-center space-x-4 bg-base-100 shadow p-3 rounded-lg"
+            className="flex flex-col lg:flex-row lg:items-center space-x-4 bg-base-100 shadow p-3 rounded-lg"
           >
             <img
               src={movie.poster}
               alt={movie.title}
-              className="h-24 w-28 object-cover rounded"
+              className="h-52 lg:h-24 w-full lg:w-28 object-cover rounded"
             />
-            <div className="flex-1">
+            <div className="mt-2 lg:mt-0 flex-1">
               <h3 className="font-semibold text-lg">{movie.title}</h3>
               <p className=" text-gray-600">
                 <span className="font-medium"> Genre</span>:: {movie.genre}
@@ -41,7 +41,7 @@ const RecentlyAdded = () => {
             </div>
             <Link
               to={`/movie/details/${movie._id}`}
-              className="btn btn-outline btn-md"
+              className="btn btn-outline btn-md mt-3 lg:mt-0"
             >
               View Details
             </Link>

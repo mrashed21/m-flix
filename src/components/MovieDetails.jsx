@@ -11,7 +11,7 @@ const MovieDetails = () => {
   const [spinner, setSpinner] = useState(false);
   const handleDelete = (_id) => {
     setSpinner(true);
-    fetch(`http://localhost:5000/movie/details/${_id}`, {
+    fetch(`https://movie-server-puce.vercel.app/movie/details/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -45,7 +45,7 @@ const MovieDetails = () => {
       summary: movie.summary,
     };
 
-    fetch(`http://localhost:5000/movie/favorites/${email}`, {
+    fetch(`https://movie-server-puce.vercel.app/movie/favorites/${email}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -81,15 +81,15 @@ const MovieDetails = () => {
       ) : (
         <div className="bg-purple-100 py-10">
           <div className="w-10/12 mx-auto">
-            <div className="card flex-row bg-base-100 shadow-xl p-4 w-full mx-auto gap-5">
-              <figure className="rounded-lg w-1/2">
+            <div className="card lg:flex-row bg-base-100 shadow-xl p-4 w-full mx-auto gap-5">
+              <figure className="rounded-lg w-full lg:w-1/2">
                 <img
                   src={movieDetail.poster}
                   alt={movieDetail.title}
                   className="h-96 w-full rounded-lg object-cover"
                 />
               </figure>
-              <div className="card-body p-0 w-1/2">
+              <div className="card-body p-0 w-full lg:w-1/2">
                 <h2 className="card-title">{movieDetail.title}</h2>
                 <p className=" text-gray-600">
                   <span className="font-medium"> Genre</span>:{" "}
@@ -118,11 +118,12 @@ const MovieDetails = () => {
                   />
                 </div>
                 <div className="card-actions justify-between mt-4">
-                  <Link to={`/movie/update/${movieDetail._id}`} className="hover:bg-gray-300 px-5  border-2 border-black text-lg font-medium rounded-md py-2 ">
+                  <Link
+                    to={`/movie/update/${movieDetail._id}`}
+                    className="hover:bg-gray-300 px-5  border-2 border-black text-lg font-medium rounded-md py-2 "
+                  >
                     {" "}
-                    <button className="">
-                      Update
-                    </button>
+                    <button className="">Update</button>
                   </Link>
 
                   <button
@@ -136,7 +137,7 @@ const MovieDetails = () => {
 
                   <button
                     onClick={() => handleFavorite(movieDetail)}
-                   className="hover:bg-success px-5  border-2 border-black text-lg font-medium rounded-md py-2 "
+                    className="hover:bg-success px-5  border-2 border-black text-lg font-medium rounded-md py-2 "
                   >
                     Favorite
                   </button>

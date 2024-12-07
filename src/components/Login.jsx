@@ -59,9 +59,7 @@ const Login = () => {
       <div className="px-5 md:w-6/12 mx-auto">
         <div className="md:w-full flex-col">
           <div className="card bg-base-100 md:w-full shrink-0 shadow-md">
-            <h1
-              className="text-center text-4xl font-bold font-Roboto mt-9"
-            >
+            <h1 className="text-center text-4xl font-bold font-Roboto mt-9">
               Login
             </h1>
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">

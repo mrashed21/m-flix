@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import "react-toastify/dist/ReactToastify.css";
-import { AuthContext } from "../provider/AuthProvider";
 import swal from "sweetalert";
+import { AuthContext } from "../provider/AuthProvider";
 const UpdateMovie = () => {
   const { user } = useContext(AuthContext);
   const updateMovie = useLoaderData();
@@ -20,13 +20,16 @@ const UpdateMovie = () => {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     const updateMovieData = { ...data, rating };
-    fetch(`http://localhost:5000/movie/update/${updateMovie._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updateMovieData),
-    })
+    fetch(
+      `https://movie-server-puce.vercel.app/movie/update/${updateMovie._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateMovieData),
+      }
+    )
       .then((res) => {
         res.json();
       })

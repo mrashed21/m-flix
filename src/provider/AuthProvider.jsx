@@ -4,6 +4,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail,
   signInWithPopup,
   signOut,
   updateProfile,
@@ -26,16 +27,20 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const handleName = (name, image) => {
+  const handleName = (name, profile) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
-      photoURL: image,
+      photoURL: profile,
     });
   };
 
   const googleProvider = new GoogleAuthProvider();
   const handleLoginGoogle = () => {
     return signInWithPopup(auth, googleProvider);
+  };
+
+  const handleReseTPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
   };
   const logOut = () => {
     return signOut(auth).then(() => {
@@ -56,6 +61,7 @@ const AuthProvider = ({ children }) => {
     setUser,
     loading,
     setLoading,
+    handleReseTPassword
   };
   useEffect(() => {
     const unSubcribe = onAuthStateChanged(auth, (currentUser) => {

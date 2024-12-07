@@ -29,7 +29,7 @@ const AddMovie = () => {
       addedAt: new Date().toISOString(),
     };
 
-    fetch("http://localhost:5000/movie", {
+    fetch("https://movie-server-puce.vercel.app/movie", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -241,9 +241,7 @@ const AddMovie = () => {
             />
           </div>
 
-          <button  className="btn btn-neutral w-full">
-            Add Movie
-          </button>
+          <button className="btn btn-neutral w-full">Add Movie</button>
         </form>
       </div>
     </div>

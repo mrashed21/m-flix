@@ -38,7 +38,7 @@ const routes = createBrowserRouter([
       {
         path: "/movie/all",
         element: <AllMovie />,
-        loader: () => fetch("http://localhost:5000/movie/all"),
+        loader: () => fetch("https://movie-server-puce.vercel.app/movie/all"),
       },
 
       {
@@ -57,7 +57,9 @@ const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/movie/details/${params.id}`),
+          fetch(
+            `https://movie-server-puce.vercel.app/movie/details/${params.id}`
+          ),
       },
       {
         path: "/movie/update/:id",
@@ -67,7 +69,9 @@ const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/movie/details/${params.id}`),
+          fetch(
+            `https://movie-server-puce.vercel.app/movie/details/${params.id}`
+          ),
       },
       {
         path: "/movie/favorites",
