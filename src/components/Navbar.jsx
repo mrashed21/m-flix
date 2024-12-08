@@ -425,8 +425,8 @@ const Navbar = () => {
                   />
                 </div>
               </div>
-              <ul className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box mt-3 w-52 p-4 shadow opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 dark:text-white">
-                <p className="text-center text-xl font-medium font-Roboto mb-3">
+              <ul className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box w-52 p-4 shadow opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity dark:bg-[#1F2937] duration-300 dark:text-white">
+                <p className="text-center text-xl  font-medium font-Roboto mb-3">
                   {user?.displayName}
                 </p>
                 <button
