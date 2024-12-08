@@ -83,9 +83,9 @@ const MovieDetails = () => {
           <span className="loading loading-spinner loading-lg"></span>
         </div>
       ) : (
-        <div className="bg-purple-100 py-10">
+        <div className="bg-purple-100 py-10 dark:bg-[#111827]">
           <div className="w-10/12 mx-auto">
-            <div className="card lg:flex-row bg-base-100 shadow-xl p-4 w-full mx-auto gap-5">
+            <div className="card lg:flex-row bg-base-100 dark:bg-[#1F2937] shadow-xl p-4 w-full mx-auto gap-5 dark:text-white">
               <figure className="rounded-lg w-full lg:w-1/2">
                 <img
                   src={movieDetail.poster}
@@ -95,19 +95,19 @@ const MovieDetails = () => {
               </figure>
               <div className="card-body p-0 w-full lg:w-1/2">
                 <h2 className="card-title">{movieDetail.title}</h2>
-                <p className=" text-gray-600">
+                <p className=" text-gray-600 dark:text-gray-300">
                   <span className="font-medium"> Genre</span>:{" "}
                   {movieDetail.genre}
                 </p>
-                <p className=" text-gray-600">
+                <p className=" text-gray-600 dark:text-gray-300">
                   <span className="font-medium">Duration</span>:{" "}
                   {movieDetail.duration} min
                 </p>
-                <p className=" text-gray-600">
+                <p className=" text-gray-600 dark:text-gray-300">
                   <span className="font-medium"> Release Year</span>:{" "}
                   {movieDetail.releaseYear}
                 </p>
-                <p className=" text-gray-600">
+                <p className=" text-gray-600 dark:text-gray-300">
                   <span className="font-medium"> Discription</span>:
                   <p> {movieDetail.summary}</p>
                 </p>
@@ -151,7 +151,7 @@ const MovieDetails = () => {
           <div className="text-center mt-8">
           <button
             onClick={() => navigate("/movie/all")}
-            className="btn btn-outline w-1/2"
+            className="btn btn-outline w-1/2 dark:text-white"
           >
             See All Movies
           </button>

@@ -25,12 +25,12 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="bg-purple-100">
+    <div className="bg-purple-100 dark:bg-[#111827] dark:text-white">
       <div className=" p-5 md:p-10 md:w-8/12 mx-auto">
         <h2 className="text-center text-2xl md:text-3xl font-bold">
           Reset your Password
         </h2>
-        <div className="mt-5 p-5 md:p-10 bg-white rounded-xl shadow-xl">
+        <div className="mt-5 p-5 md:p-10 bg-white  dark:bg-[#1F2937] rounded-xl shadow-xl">
           <form onSubmit={resetPassword}>
             <div className="form-control">
               <label className="label">
@@ -49,7 +49,7 @@ const ResetPassword = () => {
             <div className="flex items-center justify-center mt-4">
               <button
                 type="submit"
-                className="btn btn-primary rounded-full mt-5"
+                className="btn btn-outline dark:text-white rounded-full mt-5"
               >
                 Send Reset Link
               </button>

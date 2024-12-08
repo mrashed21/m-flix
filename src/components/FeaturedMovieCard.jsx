@@ -4,7 +4,7 @@ import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 const FeaturedMovieCard = ({ movie }) => {
   return (
-    <div className="card bg-base-100 dark:bg-slate-400 shadow-xl p-4">
+    <div className="card bg-base-100 dark:bg-[#1F2937] shadow-xl p-4 dark:text-white">
       <figure className="rounded-lg">
         <img
           src={movie.poster}
@@ -14,13 +14,13 @@ const FeaturedMovieCard = ({ movie }) => {
       </figure>
       <div className="card-body p-0 mt-3">
         <h2 className="card-title">{movie.title}</h2>
-        <p className=" text-gray-600">
+        <p className=" text-gray-600 dark:text-gray-300">
           <span className="font-medium"> Genre</span>: {movie.genre}
         </p>
-        <p className=" text-gray-600">
+        <p className=" text-gray-600 dark:text-gray-300">
           <span className="font-medium">Duration</span>: {movie.duration} min
         </p>
-        <p className=" text-gray-600">
+        <p className=" text-gray-600 dark:text-gray-300">
           <span className="font-medium"> Release Year</span>:{" "}
           {movie.releaseYear}
         </p>
@@ -36,7 +36,7 @@ const FeaturedMovieCard = ({ movie }) => {
         </div>
         <div className="w-full ">
           <Link to={`/movie/details/${movie._id}`}>
-            <button className="btn btn-outline w-full">See Details</button>
+            <button className="btn btn-outline w-full dark:text-white">See Details</button>
           </Link>
         </div>
       </div>

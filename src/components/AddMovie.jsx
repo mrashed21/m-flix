@@ -68,8 +68,8 @@ const AddMovie = () => {
       <Helmet>
         <title>Add Movie</title>
       </Helmet>
-      <div className="bg-purple-100 py-10">
-        <div className="max-w-3xl mx-auto bg-base-100 p-6 rounded-xl shadow-lg">
+      <div className="bg-purple-100 dark:bg-[#111827]  py-10">
+        <div className="max-w-3xl mx-auto bg-base-100 dark:bg-[#1F2937] dark:text-white p-6 rounded-xl shadow-lg">
           <h2 className="text-2xl font-bold text-center mb-6">
             Add a New Movie
           </h2>
@@ -256,7 +256,9 @@ const AddMovie = () => {
               />
             </div>
 
-            <button className="btn btn-neutral w-full">Add Movie</button>
+            <button className="btn btn-outline dark:text-white w-full">
+              Add Movie
+            </button>
           </form>
         </div>
       </div>

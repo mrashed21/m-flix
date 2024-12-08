@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const MovieCard = ({ movieData }) => {
   return (
     <>
-      <div className="card bg-base-100 shadow-xl p-4">
+      <div className="card bg-base-100 dark:bg-[#1F2937] dark:text-white shadow-xl p-4">
         <figure className="rounded-lg">
           <img
             src={movieData.poster}
@@ -14,14 +14,14 @@ const MovieCard = ({ movieData }) => {
         </figure>
         <div className="card-body p-0 mt-3">
           <h2 className="card-title">{movieData.title}</h2>
-          <p className=" text-gray-600">
+          <p className=" text-gray-600 dark:text-gray-300">
             <span className="font-medium"> Genre</span>: {movieData.genre}
           </p>
-          <p className=" text-gray-600">
+          <p className=" text-gray-600 dark:text-gray-300">
             <span className="font-medium">Duration</span>: {movieData.duration}{" "}
             min
           </p>
-          <p className=" text-gray-600">
+          <p className=" text-gray-600 dark:text-gray-300">
             <span className="font-medium"> Release Year</span>:{" "}
             {movieData.releaseYear}
           </p>
@@ -38,7 +38,7 @@ const MovieCard = ({ movieData }) => {
 
           <div className="w-full ">
             <Link to={`/movie/details/${movieData._id}`}>
-              <button className="btn btn-outline w-full">See Details</button>
+              <button className="btn btn-outline w-full dark:text-white">See Details</button>
             </Link>
           </div>
         </div>

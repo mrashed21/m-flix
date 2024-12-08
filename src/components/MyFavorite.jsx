@@ -58,9 +58,9 @@ const MyFavorite = () => {
       <Helmet>
         <title>Favorite Movies</title>
       </Helmet>
-      <div className="bg-purple-100 py-10 min-h-screen">
+      <div className="bg-purple-100 dark:bg-[#111827]  py-10 min-h-screen">
         <div className="w-11/12 mx-auto p-4">
-          <h1 className="text-2xl font-bold mb-4 text-center">
+          <h1 className="text-2xl font-bold mb-4 text-center dark:text-white">
             My Favorite Movies
           </h1>
           {favorites.length === 0 ? (
@@ -72,7 +72,7 @@ const MyFavorite = () => {
               {favorites.map((movie) => (
                 <div
                   key={movie.movieId}
-                  className="flex flex-col bg-base-100 shadow-md p-4 rounded-xl"
+                  className="flex flex-col bg-base-100 dark:text-white dark:bg-[#1F2937] shadow-md p-4 rounded-xl"
                 >
                   <img
                     src={movie.poster}
@@ -81,19 +81,19 @@ const MyFavorite = () => {
                   />
                   <div className="flex flex-col flex-grow">
                     <h3 className="font-semibold text-lg">{movie.title}</h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-gray-300">
                       <span className="font-medium">Genre:</span> {movie.genre}
                     </p>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-gray-300">
                       <span className="font-medium">Duration:</span>{" "}
                       {movie.duration}
                     </p>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-gray-300">
                       <span className="font-medium">Release Year:</span>{" "}
                       {movie.releaseYear}
                     </p>
-                    <p className="text-gray-600">
-                      <div className="flex items-center gap-2">
+                    <p className="text-gray-600 dark:text-gray-300">
+                      <div className="flex items-center mb-3 gap-2">
                         <span className="font-semibold">Rating:</span>
                         <ReactStars
                           count={5}
@@ -107,7 +107,7 @@ const MyFavorite = () => {
                   </div>
                   <button
                     onClick={() => handleDeleteFavorite(movie.movieId)}
-                    className="btn btn-error w-full mt-auto"
+                    className="btn btn-outline dark:text-white w-full  mt-auto"
                   >
                     Delete Favorite
                   </button>

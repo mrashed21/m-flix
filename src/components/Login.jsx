@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 const Login = () => {
   const { handleLogin, handleLoginGoogle, setUser } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
@@ -73,10 +74,13 @@ const Login = () => {
   };
   return (
     <>
-      <div className="bg-purple-100 py-10 ">
+    <Helmet>
+        <title>Login</title>
+      </Helmet>
+      <div className="bg-purple-100  dark:bg-[#111827] py-10 ">
         <div className="px-5 md:w-6/12 mx-auto ">
           <div className="md:w-full flex-col">
-            <div className="card bg-base-100 md:w-full shrink-0 shadow-md">
+            <div className="card bg-base-100 dark:bg-[#1F2937] dark:text-white md:w-full shrink-0 shadow-md">
               <form onSubmit={handleLoginForm} className="card-body">
                 <div className="form-control">
                   <label className="label">
@@ -119,17 +123,17 @@ const Login = () => {
                     <Link
                       to={"/reset/password"}
                       state={rememberEmail}
-                      className="label-text-alt link link-hover"
+                      className="label-text-alt dark:text-gray-300 link link-hover"
                     >
                       Forgot password?
                     </Link>
                   </p>
 
-                  <p className="md:text-end text-xs text-[#706F6F]">
+                  <p className="md:text-end text-xs text-[#706F6F] dark:text-gray-300">
                     Dont’t Have An Account ?
                     <Link
                       to={"/register"}
-                      className="text-error ml-1 font-medium"
+                      className="text-error dark:text-red-500 ml-1 font-semibold"
                     >
                       Register Now
                     </Link>
@@ -137,13 +141,13 @@ const Login = () => {
                 </div>
 
                 <div className="form-control mt-6">
-                  <button className="btn btn-outline rounded-xl">Login</button>
+                  <button className="btn btn-outline dark:text-white rounded-xl">Login</button>
                 </div>
               </form>
               <div className="form-control px-8 mb-8">
                 <button
                   onClick={handleGoogleLogin}
-                  className="btn btn-outline rounded-xl"
+                  className="btn btn-outline dark:text-white rounded-xl"
                 >
                   <span className="text-2xl">
                     <FcGoogle />

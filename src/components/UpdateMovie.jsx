@@ -19,12 +19,9 @@ const UpdateMovie = () => {
     formState: { errors },
   } = useForm();
   const [rating, setRating] = useState(updateMovie.rating);
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
   const onSubmit = (data) => {
     const updateMovieData = { ...data, rating };
-    setLoading(true); // Start loading
 
     fetch(
       `https://movie-server-puce.vercel.app/movie/update/${updateMovie._id}`,
@@ -44,12 +41,11 @@ const UpdateMovie = () => {
           icon: "success",
           button: "OK",
         });
-        setLoading(false);
+
         navigate("/movie/all");
         reset();
       })
       .catch(() => {
-        setLoading(false);
         swal({
           title: "Update Failed",
           text: "There was an error updating the movie.",
@@ -72,8 +68,8 @@ const UpdateMovie = () => {
       <Helmet>
         <title>Update Movie</title>
       </Helmet>
-      <div className="bg-purple-100 py-10">
-        <div className="max-w-3xl mx-auto dark:bg-purple-500 bg-base-100 p-6 rounded-lg shadow-lg">
+      <div className="bg-purple-100 dark:bg-[#111827] py-10">
+        <div className="max-w-3xl mx-auto dark:bg-[#1F2937] p-6 rounded-lg shadow-lg dark:text-white">
           <h2 className="text-2xl font-bold text-center mb-6">Update Movie</h2>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
@@ -260,12 +256,11 @@ const UpdateMovie = () => {
               />
             </div>
 
-            <button type="submit" className="btn btn-outline rounded-xl w-full">
-              {loading ? (
-                <div className="spinner-border animate-spin"></div>
-              ) : (
-                "Update Movie"
-              )}
+            <button
+              type="submit"
+              className="btn btn-outline rounded-lg dark:text-white w-full"
+            >
+              Update Movie
             </button>
           </form>
         </div>

@@ -38,16 +38,16 @@ const AllMovie = () => {
       <Helmet>
         <title>All Movies</title>
       </Helmet>
-      <div className="bg-purple-100 py-10 min-h-screen">
+      <div className="bg-purple-100 dark:bg-[#111827] py-10 min-h-screen">
         <div className="w-10/12 mx-auto ">
-          <h1 className="text-2xl font-bold text-center">Browse All Movies</h1>
-          <div className="relative flex justify-center mt-6 lg:mt-0 lg:justify-end mb-6">
+          <h1 className="text-2xl font-bold text-center dark:text-white">Browse All Movies</h1>
+          <div className="relative dark:text-white  flex justify-center mt-6 lg:mt-0 lg:justify-end mb-6">
             <input
               type="text"
               placeholder="Search movie ..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className=" input input-bordered w-80"
+              className=" input input-bordered w-80 dark:bg-[#1F2937]"
             />
             <span className="hidden lg:absolute lg:inline-flex right-3 top-3 text-2xl">
               <IoIosSearch />

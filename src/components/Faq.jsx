@@ -28,7 +28,7 @@ const Faq = () => {
   ];
 
   return (
-  <div className="bg-purple-100 py-10">
+  <div className="bg-purple-100 py-10 dark:bg-[#111827]">
       <div className="w-11/12 mx-auto my-8">
       <h2 className="text-3xl font-bold  mb-6">
         Frequently Asked Questions
@@ -40,10 +40,10 @@ const Faq = () => {
             className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
           >
             <input type="checkbox" />
-            <div className="collapse-title text-xl font-medium">
+            <div className="collapse-title text-xl font-medium dark:text-white">
               {faq.question}
             </div>
-            <div className="collapse-content">
+            <div className="collapse-content dark:text-gray-300">
               <p>{faq.answer}</p>
             </div>
           </div>

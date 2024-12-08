@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -81,129 +82,135 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-purple-100 py-10 ">
-      <div className="px-5 md:px-0 md:w-6/12 mx-auto">
-        <div className="w-full flex-col">
-          <div className="card bg-base-100 w-full shrink-0 shadow-md">
-            <h1 className="text-center text-4xl font-bold font-Roboto mt-9">
-              Register Now
-            </h1>
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="text-lg font-medium">Name</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter your name"
-                  className="input bg-[#F3F3F3] rounded-lg focus:outline-none"
-                  {...register("name", { required: "Name is required" })}
-                />
-                {errors.name && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.name.message}
-                  </p>
-                )}
-              </div>
+    <>
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
+      <div className="bg-purple-100 dark:bg-[#111827] py-10 ">
+        <div className="px-5 md:px-0 md:w-6/12 mx-auto">
+          <div className="w-full flex-col">
+            <div className="card bg-base-100 dark:bg-[#1F2937] dark:text-white w-full shrink-0 shadow-md">
+              <h1 className="text-center text-4xl font-bold font-Roboto mt-9">
+                Register Now
+              </h1>
+              <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="text-lg font-medium">Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter your name"
+                    className="input bg-[#F3F3F3] rounded-lg focus:outline-none"
+                    {...register("name", { required: "Name is required" })}
+                  />
+                  {errors.name && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.name.message}
+                    </p>
+                  )}
+                </div>
 
-              <div className="form-control">
-                <label className="label">
-                  <span className="text-lg font-medium">Image URL</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter your Photo URL"
-                  className={`input bg-[#F3F3F3] rounded-lg focus:outline-none ${
-                    errors.profile ? "border-error" : ""
-                  }`}
-                  {...register("profile", {
-                    required: "Image URL is required.",
-                    pattern: {
-                      value:
-                        /^(https?):\/\/[^\s$.?#].[^\s]*\.(jpg|jpeg|png|gif|bmp)$/i,
-                      message:
-                        "Please enter a valid image URL (e.g., .jpg, .jpeg, .png).",
-                    },
-                  })}
-                />
-                {errors.profile && (
-                  <p className="text-error text-sm mt-1">
-                    {errors.profile.message}
-                  </p>
-                )}
-              </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="text-lg font-medium">Image URL</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter your Photo URL"
+                    className={`input bg-[#F3F3F3] rounded-lg focus:outline-none ${
+                      errors.profile ? "border-error" : ""
+                    }`}
+                    {...register("profile", {
+                      required: "Image URL is required.",
+                      pattern: {
+                        value:
+                          /^(https?):\/\/[^\s$.?#].[^\s]*\.(jpg|jpeg|png|gif|bmp)$/i,
+                        message:
+                          "Please enter a valid image URL (e.g., .jpg, .jpeg, .png).",
+                      },
+                    })}
+                  />
+                  {errors.profile && (
+                    <p className="text-error text-sm mt-1">
+                      {errors.profile.message}
+                    </p>
+                  )}
+                </div>
 
-              <div className="form-control">
-                <label className="label">
-                  <span className="text-lg font-medium">Email</span>
-                </label>
-                <input
-                  type="email"
-                  placeholder="email"
-                  className="input bg-[#F3F3F3] rounded-lg focus:outline-none"
-                  {...register("email", {
-                    required: "Email is required",
-                    pattern: {
-                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                      message: "Invalid email format",
-                    },
-                  })}
-                />
-                {errors.email && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.email.message}
-                  </p>
-                )}
-              </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="text-lg font-medium">Email</span>
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="email"
+                    className="input bg-[#F3F3F3] rounded-lg focus:outline-none"
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value:
+                          /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                        message: "Invalid email format",
+                      },
+                    })}
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
 
-              <div className="form-control relative">
-                <label className="label">
-                  <span className="text-lg font-medium">Password</span>
-                </label>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="password"
-                  className="input bg-[#F3F3F3] rounded-lg focus:outline-none"
-                  {...register("password", {
-                    required: "Password is required",
-                  })}
-                />
+                <div className="form-control relative">
+                  <label className="label">
+                    <span className="text-lg font-medium">Password</span>
+                  </label>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="password"
+                    className="input bg-[#F3F3F3] rounded-lg focus:outline-none"
+                    {...register("password", {
+                      required: "Password is required",
+                    })}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-14 text-xl"
+                  >
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </button>
+                  {error && (
+                    <p className="text-red-500 text-sm text-center mt-3">
+                      {error}
+                    </p>
+                  )}
+                </div>
+
+                <div className="form-control mt-6">
+                  <button className="btn btn-outline dark:text-white rounded-xl">
+                    Register Now
+                  </button>
+                </div>
+              </form>
+
+              <div className="form-control px-8 mb-8">
                 <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-14 text-xl"
+                  onClick={handleGoogleLogin}
+                  className="btn btn-outline dark:text-white rounded-xl"
                 >
-                  {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </button>
-                {error && (
-                  <p className="text-red-500 text-sm text-center mt-3">
-                    {error}
-                  </p>
-                )}
-              </div>
-
-              <div className="form-control mt-6">
-                <button className="btn btn-outline rounded-xl">
-                  Register Now
+                  <span className="text-2xl">
+                    <FcGoogle />
+                  </span>{" "}
+                  Sign Up with Google
                 </button>
               </div>
-            </form>
-
-            <div className="form-control px-8 mb-8">
-              <button
-                onClick={handleGoogleLogin}
-                className="btn btn-outline rounded-xl"
-              >
-                <span className="text-2xl">
-                  <FcGoogle />
-                </span>{" "}
-                Sign Up with Google
-              </button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
