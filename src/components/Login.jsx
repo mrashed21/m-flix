@@ -104,14 +104,14 @@ const Login = () => {
                     type={showPassword ? " text" : "password"}
                     name="password"
                     placeholder="password"
-                    className="input bg-[#F3F3F3] rounded-lg focus:outline-none"
+                    className="input bg-[#F3F3F3] dark:text-black rounded-lg focus:outline-none"
                     required
                   />
                   <button
                     onClick={() => {
                       setShowPassword(!showPassword);
                     }}
-                    className="absolute right-3 top-14 text-xl"
+                    className="absolute right-3 top-14 text-xl dark:text-black"
                     type="button"
                   >
                     {showPassword ? <FaEyeSlash /> : <FaEye />}

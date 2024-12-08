@@ -169,7 +169,7 @@ const Register = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     placeholder="password"
-                    className="input bg-[#F3F3F3] rounded-lg focus:outline-none"
+                    className="input bg-[#F3F3F3] rounded-lg dark:text-black focus:outline-none"
                     {...register("password", {
                       required: "Password is required",
                     })}
@@ -177,7 +177,7 @@ const Register = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-14 text-xl"
+                    className="absolute right-3 dark:text-black top-14 text-xl"
                   >
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </button>
