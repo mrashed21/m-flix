@@ -7,23 +7,22 @@ import MyFavorite from "../components/MyFavorite";
 import Register from "../components/Register";
 import ResetPassword from "../components/ResetPassword";
 import UpdateMovie from "../components/UpdateMovie";
+import NotFound from "../error/NotFound";
 import MainLayout from "../layouts/MainLayout";
 import AllMovie from "../pages/AllMovie";
 import Home from "../pages/Home";
 import AuthProvider from "../provider/AuthProvider";
-import ThemeProvider from "../provider/ThemeProvider";
 import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: (
-      <ThemeProvider>
-        <AuthProvider>
-          <MainLayout />
-        </AuthProvider>
-      </ThemeProvider>
+      <AuthProvider>
+        <MainLayout />
+      </AuthProvider>
     ),
+    errorElement: <NotFound />,
     children: [
       { path: "/", element: <Home /> },
       { path: "/login", element: <Login /> },

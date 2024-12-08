@@ -59,7 +59,6 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     const { email, password, name, profile } = data;
-    console.log("this is data", data);
     const passwordError = validatePassword(password);
 
     if (passwordError) {
@@ -70,7 +69,7 @@ const Register = () => {
     try {
       const result = await handleRegister(email, password);
       await handleName(name, profile);
-      setUser(result.user);
+      setUser({ ...result.user, displayName: name, photoURL: profile });
       toast.success("Signup successful!", {
         position: "top-center",
         autoClose: 2000,
@@ -120,8 +119,10 @@ const Register = () => {
                   {...register("profile", {
                     required: "Image URL is required.",
                     pattern: {
-                      value: /^https:\/\/.+/,
-                      message: "Please enter a valid URL starting with https.",
+                      value:
+                        /^(https?):\/\/[^\s$.?#].[^\s]*\.(jpg|jpeg|png|gif|bmp)$/i,
+                      message:
+                        "Please enter a valid image URL (e.g., .jpg, .jpeg, .png).",
                     },
                   })}
                 />
@@ -183,7 +184,7 @@ const Register = () => {
 
               <div className="form-control mt-6">
                 <button className="btn btn-outline rounded-xl">
-                  Sign Up
+                  Register Now
                 </button>
               </div>
             </form>

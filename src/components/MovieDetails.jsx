@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import ReactStars from "react-rating-stars-component";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
@@ -74,6 +75,9 @@ const MovieDetails = () => {
 
   return (
     <>
+      <Helmet>
+        <title> Movie Details</title>
+      </Helmet>
       {spinner ? (
         <div className="flex justify-center items-center h-screen">
           <span className="loading loading-spinner loading-lg"></span>
@@ -117,27 +121,26 @@ const MovieDetails = () => {
                     edit={false}
                   />
                 </div>
-                <div className="card-actions justify-between mt-4">
+                <div className="card-actions flex-col lg:flex-row justify-between mt-4">
                   <Link
                     to={`/movie/update/${movieDetail._id}`}
-                    className="hover:bg-gray-300 px-5  border-2 border-black text-lg font-medium rounded-md py-2 "
+                    className="hover:bg-gray-300 px-5  border-2 border-black text-lg font-medium rounded-md py-2 w-full lg:w-fit text-center"
                   >
-                    {" "}
-                    <button className="">Update</button>
+                    <button>Update</button>
                   </Link>
 
                   <button
                     onClick={() => {
                       handleDelete(movieDetail._id);
                     }}
-                    className="hover:bg-error px-5  border-2 border-black text-lg font-medium rounded-md py-2 "
+                    className="hover:bg-error px-5  border-2 border-black text-lg font-medium rounded-md py-2 w-full lg:w-fit "
                   >
                     Delete
                   </button>
 
                   <button
                     onClick={() => handleFavorite(movieDetail)}
-                    className="hover:bg-success px-5  border-2 border-black text-lg font-medium rounded-md py-2 "
+                    className="hover:bg-success px-5  border-2 border-black text-lg font-medium rounded-md py-2 w-full lg:w-fit"
                   >
                     Favorite
                   </button>
@@ -145,6 +148,14 @@ const MovieDetails = () => {
               </div>
             </div>
           </div>
+          <div className="text-center mt-8">
+          <button
+            onClick={() => navigate("/movie/all")}
+            className="btn btn-outline w-1/2"
+          >
+            See All Movies
+          </button>
+        </div>
         </div>
       )}
     </>

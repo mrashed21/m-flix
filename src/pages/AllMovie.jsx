@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { IoIosSearch } from "react-icons/io";
 import { useLoaderData } from "react-router-dom";
 import MovieCard from "../components/MovieCard";
@@ -33,36 +34,46 @@ const AllMovie = () => {
   }
 
   return (
-    <div className="bg-purple-100 py-10 min-h-screen">
-      <div className="w-10/12 mx-auto ">
-        <h1 className="text-2xl font-bold text-center">Browse All Movies</h1>
-        <div className="relative flex justify-end mb-6">
-          <input
-            type="text"
-            placeholder="Search movie ..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="input input-bordered w-80"
-          />
-          <span className="absolute right-3 top-3 text-2xl">
-            <IoIosSearch />
-          </span>
-        </div>
+    <>
+      <Helmet>
+        <title>All Movies</title>
+      </Helmet>
+      <div className="bg-purple-100 py-10 min-h-screen">
+        <div className="w-10/12 mx-auto ">
+          <h1 className="text-2xl font-bold text-center">Browse All Movies</h1>
+          <div className="relative flex justify-center mt-6 lg:mt-0 lg:justify-end mb-6">
+            <input
+              type="text"
+              placeholder="Search movie ..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className=" input input-bordered w-80"
+            />
+            <span className="hidden lg:absolute lg:inline-flex right-3 top-3 text-2xl">
+              <IoIosSearch />
+            </span>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredMovies.length > 0 ? (
-            filteredMovies.map((movieData) => (
-              <MovieCard key={movieData._id} movieData={movieData}></MovieCard>
-            ))
-          ) : (
-            <p className="col-span-full
-            mt-36 text-center text-gray-500 text-2xl font-medium font-Roboto">
-              No movies found.
-            </p>
-          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredMovies.length > 0 ? (
+              filteredMovies.map((movieData) => (
+                <MovieCard
+                  key={movieData._id}
+                  movieData={movieData}
+                ></MovieCard>
+              ))
+            ) : (
+              <p
+                className="col-span-full
+            mt-36 text-center text-gray-500 text-2xl font-medium font-Roboto"
+              >
+                No movies found.
+              </p>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

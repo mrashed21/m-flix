@@ -4,7 +4,7 @@ import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 const FeaturedMovieCard = ({ movie }) => {
   return (
-    <div className="card bg-base-100 shadow-xl p-4">
+    <div className="card bg-base-100 dark:bg-slate-400 shadow-xl p-4">
       <figure className="rounded-lg">
         <img
           src={movie.poster}
