@@ -29,7 +29,7 @@ const RecentlyAdded = () => {
               <div className="mt-2 lg:mt-0 flex-1">
                 <h3 className="font-semibold text-lg">{movie.title}</h3>
                 <p className=" text-gray-600 dark:text-gray-300">
-                  <span className="font-medium"> Genre</span>:: {movie.genre}
+                  <span className="font-medium"> Genre</span>: {movie.genre}
                 </p>
                 <p className=" text-gray-600 dark:text-gray-300">
                   <span className="font-medium"> Release Year</span>:{" "}

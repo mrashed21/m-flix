@@ -122,40 +122,50 @@ const MovieDetails = () => {
                   />
                 </div>
                 <div className="card-actions flex-col lg:flex-row justify-between mt-4">
-                  <Link
-                    to={`/movie/update/${movieDetail._id}`}
-                    className="hover:bg-gray-300 px-5  border-2 border-black text-lg font-medium rounded-md py-2 w-full lg:w-fit text-center"
-                  >
-                    <button>Update</button>
-                  </Link>
+                  {user.email === movieDetail.email ? (
+                    <>
+                      <Link
+                        to={`/movie/update/${movieDetail._id}`}
+                        className="hover:bg-gray-300 px-5  border-2 border-black text-lg font-medium rounded-md py-2 w-full lg:w-fit text-center"
+                      >
+                        <button>Update</button>
+                      </Link>
 
-                  <button
-                    onClick={() => {
-                      handleDelete(movieDetail._id);
-                    }}
-                    className="hover:bg-error px-5  border-2 border-black text-lg font-medium rounded-md py-2 w-full lg:w-fit "
-                  >
-                    Delete
-                  </button>
-
-                  <button
-                    onClick={() => handleFavorite(movieDetail)}
-                    className="hover:bg-success px-5  border-2 border-black text-lg font-medium rounded-md py-2 w-full lg:w-fit"
-                  >
-                    Favorite
-                  </button>
+                      <button
+                        onClick={() => {
+                          handleDelete(movieDetail._id);
+                        }}
+                        className="hover:bg-error px-5  border-2 border-black text-lg font-medium rounded-md py-2 w-full lg:w-fit "
+                      >
+                        Delete
+                      </button>
+                      <button
+                        onClick={() => handleFavorite(movieDetail)}
+                        className="hover:bg-success px-5  border-2 border-black text-lg font-medium rounded-md py-2 w-full lg:w-fit"
+                      >
+                        Favorite
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => handleFavorite(movieDetail)}
+                      className="hover:bg-success px-5  border-2 border-black text-lg font-medium rounded-md py-2 w-full lg:w-fit"
+                    >
+                      Favorite
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
           </div>
           <div className="text-center mt-8">
-          <button
-            onClick={() => navigate("/movie/all")}
-            className="btn btn-outline w-1/2 dark:text-white"
-          >
-            See All Movies
-          </button>
-        </div>
+            <button
+              onClick={() => navigate("/movie/all")}
+              className="btn btn-outline w-1/2 dark:text-white"
+            >
+              See All Movies
+            </button>
+          </div>
         </div>
       )}
     </>
