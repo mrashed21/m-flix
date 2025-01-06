@@ -38,7 +38,9 @@ const MovieCard = ({ movieData }) => {
 
           <div className="w-full ">
             <Link to={`/movie/details/${movieData._id}`}>
-              <button className="btn btn-outline w-full dark:text-white">See Details</button>
+              <button className="btn btn-outline w-full dark:text-white">
+                See Details
+              </button>
             </Link>
           </div>
         </div>
