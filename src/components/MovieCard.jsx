@@ -9,7 +9,7 @@ const MovieCard = ({ movieData }) => {
           <img
             src={movieData.poster}
             alt={movieData.title}
-            className="h-64 w-full rounded-lg object-cover"
+            className="h-52 w-full rounded-lg object-cover"
           />
         </figure>
         <div className="card-body p-0 mt-3">

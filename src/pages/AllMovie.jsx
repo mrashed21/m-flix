@@ -39,7 +39,7 @@ const AllMovie = () => {
         <title>All Movies</title>
       </Helmet>
       <div className="bg-purple-100 dark:bg-[#111827] py-10 min-h-screen">
-        <div className="w-10/12 mx-auto ">
+        <div className="w-11/12 mx-auto ">
           <h1 className="text-2xl font-bold text-center dark:text-white">Browse All Movies</h1>
           <div className="relative dark:text-white  flex justify-center mt-6 lg:mt-0 lg:justify-end mb-6">
             <input
@@ -54,7 +54,7 @@ const AllMovie = () => {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {filteredMovies.length > 0 ? (
               filteredMovies.map((movieData) => (
                 <MovieCard

@@ -50,11 +50,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/movie/details/:id",
-        element: (
-          <PrivateRoute>
-            <MovieDetails />
-          </PrivateRoute>
-        ),
+        element: <MovieDetails />,
         loader: ({ params }) =>
           fetch(
             `https://movie-server-puce.vercel.app/movie/details/${params.id}`

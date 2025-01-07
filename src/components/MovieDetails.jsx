@@ -32,8 +32,55 @@ const MovieDetails = () => {
       });
   };
 
+  // const handleFavorite = (movie) => {
+  //   const email = user?.email;
+  //   const favoriteData = {
+  //     email,
+  //     movieId: movie._id,
+  //     title: movie.title,
+  //     poster: movie.poster,
+  //     genre: movie.genre,
+  //     releaseYear: movie.releaseYear,
+  //     duration: movie.duration,
+  //     rating: movie.rating,
+  //     summary: movie.summary,
+  //   };
+
+  //   fetch(`https://movie-server-puce.vercel.app/movie/favorites/${email}`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(favoriteData),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.exists) {
+  //         swal({
+  //           title: "Faild to Add!",
+  //           text: "This movie is already in your favorites!",
+  //           icon: "error",
+  //           button: "OK",
+  //         });
+  //       } else {
+  //         swal({
+  //           title: "Added Successfully",
+  //           text: "Added to favorites successfully!",
+  //           icon: "success",
+  //           button: "OK",
+  //         });
+  //       }
+  //     });
+  // };
+
   const handleFavorite = (movie) => {
-    const email = user?.email;
+    if (!user?.email) {
+      // Redirect to login page if user is not logged in
+      navigate("/login");
+      return;
+    }
+  
+    const email = user.email;
     const favoriteData = {
       email,
       movieId: movie._id,
@@ -45,7 +92,7 @@ const MovieDetails = () => {
       rating: movie.rating,
       summary: movie.summary,
     };
-
+  
     fetch(`https://movie-server-puce.vercel.app/movie/favorites/${email}`, {
       method: "POST",
       headers: {
@@ -57,7 +104,7 @@ const MovieDetails = () => {
       .then((data) => {
         if (data.exists) {
           swal({
-            title: "Faild to Add!",
+            title: "Failed to Add!",
             text: "This movie is already in your favorites!",
             icon: "error",
             button: "OK",
@@ -70,9 +117,17 @@ const MovieDetails = () => {
             button: "OK",
           });
         }
+      })
+      .catch(() => {
+        swal({
+          title: "Error!",
+          text: "Failed to add to favorites!",
+          icon: "error",
+          button: "OK",
+        });
       });
   };
-
+  
   return (
     <>
       <Helmet>
@@ -122,7 +177,7 @@ const MovieDetails = () => {
                   />
                 </div>
                 <div className="card-actions flex-col lg:flex-row justify-between mt-4">
-                  {user.email === movieDetail.email ? (
+                  {user?.email === movieDetail?.email ? (
                     <>
                       <Link
                         to={`/movie/update/${movieDetail._id}`}
