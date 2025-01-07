@@ -12,7 +12,7 @@ const MovieDetails = () => {
   const [spinner, setSpinner] = useState(false);
   const handleDelete = (_id) => {
     setSpinner(true);
-    fetch(`https://movie-server-puce.vercel.app/movie/details/${_id}`, {
+    fetch(`https://movie-server-sepia.vercel.app/movie/details/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -46,7 +46,7 @@ const MovieDetails = () => {
   //     summary: movie.summary,
   //   };
 
-  //   fetch(`https://movie-server-puce.vercel.app/movie/favorites/${email}`, {
+  //   fetch(`https://movie-server-sepia.vercel.app/movie/favorites/${email}`, {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const MovieDetails = () => {
       navigate("/login");
       return;
     }
-  
+
     const email = user.email;
     const favoriteData = {
       email,
@@ -92,8 +92,8 @@ const MovieDetails = () => {
       rating: movie.rating,
       summary: movie.summary,
     };
-  
-    fetch(`https://movie-server-puce.vercel.app/movie/favorites/${email}`, {
+
+    fetch(`https://movie-server-sepia.vercel.app/movie/favorites/${email}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -127,7 +127,7 @@ const MovieDetails = () => {
         });
       });
   };
-  
+
   return (
     <>
       <Helmet>

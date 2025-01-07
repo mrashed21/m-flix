@@ -30,7 +30,7 @@ const AddMovie = () => {
       addedAt: new Date().toISOString(),
     };
 
-    fetch("https://movie-server-puce.vercel.app/movie", {
+    fetch("https://movie-server-sepia.vercel.app/movie", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

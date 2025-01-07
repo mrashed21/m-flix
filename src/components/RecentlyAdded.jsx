@@ -5,7 +5,7 @@ const RecentlyAdded = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetch("https://movie-server-puce.vercel.app/movie/recent")
+    fetch("https://movie-server-sepia.vercel.app/movie/recent")
       .then((res) => res.json())
       .then((data) => setMovies(data))
       .catch((err) => console.error("Error fetching recent movies:", err));

@@ -1,4 +1,3 @@
-
 import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import ReactStars from "react-rating-stars-component";
@@ -13,7 +12,7 @@ const MyFavorite = () => {
   useEffect(() => {
     if (user?.email) {
       fetch(
-        `https://movie-server-puce.vercel.app/movie/favorites/${user.email}`
+        `https://movie-server-sepia.vercel.app/movie/favorites/${user.email}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -25,7 +24,7 @@ const MyFavorite = () => {
 
   const handleDeleteFavorite = (movieId) => {
     fetch(
-      `https://movie-server-puce.vercel.app/movie/favorites/${user.email}/${movieId}`,
+      `https://movie-server-sepia.vercel.app/movie/favorites/${user.email}/${movieId}`,
       {
         method: "DELETE",
       }

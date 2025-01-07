@@ -24,7 +24,7 @@ const UpdateMovie = () => {
     const updateMovieData = { ...data, rating };
 
     fetch(
-      `https://movie-server-puce.vercel.app/movie/update/${updateMovie._id}`,
+      `https://movie-server-sepia.vercel.app/movie/update/${updateMovie._id}`,
       {
         method: "PUT",
         headers: {

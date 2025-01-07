@@ -37,7 +37,7 @@ const routes = createBrowserRouter([
       {
         path: "/movie/all",
         element: <AllMovie />,
-        loader: () => fetch("https://movie-server-puce.vercel.app/movie/all"),
+        loader: () => fetch("https://movie-server-sepia.vercel.app/movie/all"),
       },
 
       {
@@ -53,7 +53,7 @@ const routes = createBrowserRouter([
         element: <MovieDetails />,
         loader: ({ params }) =>
           fetch(
-            `https://movie-server-puce.vercel.app/movie/details/${params.id}`
+            `https://movie-server-sepia.vercel.app/movie/details/${params.id}`
           ),
       },
       {
@@ -65,7 +65,7 @@ const routes = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://movie-server-puce.vercel.app/movie/details/${params.id}`
+            `https://movie-server-sepia.vercel.app/movie/details/${params.id}`
           ),
       },
       {
